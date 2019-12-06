@@ -44,9 +44,29 @@ plt.pyplot.show()
 
 # Building the optimal model using Backward Elimination
 import statsmodels.formula.api as sm
+import statsmodels.regression.linear_model as smOLS
 # adding column with 1s to the X 
 X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis = 1 )
+X_opt = X[:,[0,1,2,3,4,5]]
 
+regressor_OLS = smOLS.OLS(endog= y, exog= X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:,[0,1,3,4,5]]
+regressor_OLS = smOLS.OLS(endog= y, exog= X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:,[0,1,3,5]]
+regressor_OLS = smOLS.OLS(endog= y, exog= X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:,[0,3,5]]
+regressor_OLS = smOLS.OLS(endog= y, exog= X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:,[0,3]]
+regressor_OLS = smOLS.OLS(endog= y, exog= X_opt).fit()
+regressor_OLS.summary()
 
 
 
